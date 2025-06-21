@@ -5,9 +5,34 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build:types": "tsc --project tsconfig.app.json",
+    "build:src": "vite build",
+    "build": "npm run build:types && npm run build:src",
     "lint": "eslint .",
     "preview": "vite preview"
+  },
+  "sideEffects": false,
+  "main": "dist/lib.cjs.js",
+  "module": "dist/lib.js",
+  "types": "types/lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./types/lib/index.d.ts",
+      "import": "./dist/lib.js",
+      "require": "./dist/lib.cjs.js"
+    },
+    "./lib/jsx-runtime.js": {
+      "import": "./dist/lib/jsx-runtime.js",
+      "require": "./dist/lib/jsx-runtime.js"
+    }
+  },
+  "files": [
+    "types",
+    "dist"
+  ],
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.10",

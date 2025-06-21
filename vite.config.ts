@@ -1,6 +1,45 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
+import { resolve } from 'path';
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
+  build: {
+    outDir: 'dist',
+    cssCodeSplit: true, // Ensures separate CSS files
+    lib: {
+      entry: resolve(__dirname, 'src/lib/index.ts'), // Your library's entry point
+      name: 'ReactComponentLibrary',
+      formats: ['es', 'cjs'], // Output formats
+      fileName: (format, entryName) => entryName + (format === 'es' ? '.js' : `.${format}.js`), // File names for the output files
+    },
+    rollupOptions: {
+      external: ['react', 'react-dom', 'react/jsx-runtime'], // Exclude React from the bundle
+      input: {
+        lib: resolve(__dirname, 'src/lib/index.ts'), // Main entry point of lib
+      },
+      output: {
+        inlineDynamicImports: false, // to have multiple entry points, vite needs this option set to false
+        globals: {
+          'react': 'React',
+          'react-dom': 'ReactDOM',
+        },
+        chunkFileNames: ({ name }) => {
+          if (name && name.includes('jsx-runtime')) {
+            return 'lib/[name].js';
+          }
+          return '[name].js';
+        },
+        // Keep CSS files extracted per entry
+        assetFileNames: ({ names }) => {
+          const name = names[0];
+          if (name && name.endsWith('.css')) {
+            return '[name][extname]'; // keep CSS files named as per their entry point to be able to import them directly in other app
+          }
+          return 'assets/[name]-[hash][extname]';
+        },
+      },
+    },
+  },
 });
