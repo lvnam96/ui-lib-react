@@ -21,10 +21,6 @@
       "import": "./dist/lib.js",
       "require": "./dist/lib.cjs.js"
     },
-    "./lib/jsx-runtime.js": {
-      "import": "./dist/lib/jsx-runtime.js",
-      "require": "./dist/lib/jsx-runtime.js"
-    },
     "./BlinkBlink": {
       "types": "./types/lib/components/BlinkBlink/index.d.ts",
       "import": "./dist/BlinkBlink.js",
