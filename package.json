@@ -24,6 +24,16 @@
     "./lib/jsx-runtime.js": {
       "import": "./dist/lib/jsx-runtime.js",
       "require": "./dist/lib/jsx-runtime.js"
+    },
+    "./BlinkBlink": {
+      "types": "./types/lib/components/BlinkBlink/index.d.ts",
+      "import": "./dist/BlinkBlink.js",
+      "require": "./dist/BlinkBlink.cjs.js"
+    },
+    "./FancyBox": {
+      "types": "./types/lib/components/FancyBox/index.d.ts",
+      "import": "./dist/FancyBox.js",
+      "require": "./dist/FancyBox.cjs.js"
     }
   },
   "files": [

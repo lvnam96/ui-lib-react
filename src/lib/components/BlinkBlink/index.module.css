@@ -1,0 +1,12 @@
+.blink {
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--color-red-900), var(--color-blue-900));
+  color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px rgba(110, 142, 251, 0.2);
+  font-size: 1.5rem;
+  text-align: center;
+  font-weight: bold;
+  min-width: 200px;
+  min-height: 100%;
+}

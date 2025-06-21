@@ -18,6 +18,8 @@ export default defineConfig({
       external: ['react', 'react-dom', 'react/jsx-runtime'], // Exclude React from the bundle
       input: {
         lib: resolve(__dirname, 'src/lib/index.ts'), // Main entry point of lib
+        FancyBox: resolve(__dirname, 'src/lib/components/FancyBox/index.tsx'),
+        BlinkBlink: resolve(__dirname, 'src/lib/components/BlinkBlink/index.tsx'),
       },
       output: {
         inlineDynamicImports: false, // to have multiple entry points, vite needs this option set to false
