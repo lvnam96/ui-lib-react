@@ -12,7 +12,12 @@ function App() {
           <FancyBox />
         </div>
         <div className="w-1/2">
-          <BlinkBlink counter={count} onClick={() => setCount((count) => count + 1)} />
+          <BlinkBlink
+            counter={count}
+            onClick={() => {
+              setCount((count) => count + 1);
+            }}
+          />
         </div>
       </div>
     </>
