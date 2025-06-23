@@ -1,7 +1,13 @@
+import type { FC } from 'react';
 import styles from './index.module.css';
 // import { useRxjsStore } from '../../hooks/useExternalStore';
 
-export const BlinkBlink = ({ counter, ...props }: { counter?: number; onClick: () => void }) => {
+export interface BlinkBlinkProps extends React.HTMLAttributes<HTMLDivElement> {
+  counter?: number;
+  onClick: React.HTMLAttributes<HTMLDivElement>['onClick'];
+}
+
+export const BlinkBlink: FC<BlinkBlinkProps> = ({ counter, ...props }) => {
   // useRxjsStore(behaviorSubjectInstance);
   return (
     <div
