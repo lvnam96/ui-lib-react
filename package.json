@@ -6,8 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build:types": "tsc --project tsconfig.app.json",
+    "build:types:watch": "npm run build:types -- --watch",
     "build:src": "vite build",
+    "build:src:watch": "npm run build:src -- --watch",
     "build": "npm run build:types && npm run build:src",
+    "build:watch": "concurrently \"npm:build:types:watch\" \"npm:build:src:watch\"",
     "lint": "eslint .",
     "preview": "vite preview"
   },
