@@ -2,9 +2,18 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { resolve } from 'path';
+// import smartAsset from 'rollup-plugin-smart-asset';
 
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    // smartAsset({
+    //   rule: 'rebase',
+    //   keepImport: true, // Delegate bundling to consumer
+    //   extensions: ['.svg', '.gif', '.png', '.jpg', '.jpeg', '.webp'],
+    // }),
+    react(),
+    tailwindcss(),
+  ],
   server: {
     port: 5170,
     open: true,
@@ -19,6 +28,7 @@ export default defineConfig({
       fileName: (format, entryName) => entryName + (format === 'es' ? '.js' : `.${format}.js`), // File names for the output files
     },
     rollupOptions: {
+      makeAbsoluteExternalsRelative: true, // Make external dependencies relative
       external: ['react', 'react-dom', 'react/jsx-runtime'], // Exclude React from the bundle
       input: {
         lib: resolve(__dirname, 'src/lib/index.ts'), // Main entry point of lib
@@ -31,12 +41,6 @@ export default defineConfig({
         globals: {
           'react': 'React',
           'react-dom': 'ReactDOM',
-        },
-        chunkFileNames: ({ name }) => {
-          if (name && name.includes('jsx-runtime')) {
-            return 'lib/[name].js';
-          }
-          return '[name].js';
         },
         // Keep CSS files extracted per entry
         assetFileNames: ({ names }) => {
