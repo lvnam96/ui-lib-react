@@ -1,0 +1,2 @@
+/* Must import tailwind here (not in each component's CSS file) to ensure tailwind's CSS code is not duplicated to multiple CSS files */
+@import 'tailwindcss';
