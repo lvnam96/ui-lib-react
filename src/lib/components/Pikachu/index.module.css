@@ -1,0 +1,5 @@
+.pikachu {
+  height: 342px;
+  width: 480px;
+  background: url('../../../assets/pikachu.gif') center/cover no-repeat;
+}

@@ -24,6 +24,7 @@ export default defineConfig({
         lib: resolve(__dirname, 'src/lib/index.ts'), // Main entry point of lib
         FancyBox: resolve(__dirname, 'src/lib/components/FancyBox/index.tsx'),
         BlinkBlink: resolve(__dirname, 'src/lib/components/BlinkBlink/index.tsx'),
+        Pikachu: resolve(__dirname, 'src/lib/components/Pikachu/index.tsx'),
       },
       output: {
         inlineDynamicImports: false, // to have multiple entry points, vite needs this option set to false
