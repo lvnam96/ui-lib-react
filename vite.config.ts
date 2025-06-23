@@ -5,6 +5,10 @@ import { resolve } from 'path';
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  server: {
+    port: 5170,
+    open: true,
+  },
   build: {
     outDir: 'dist',
     cssCodeSplit: true, // Ensures separate CSS files
