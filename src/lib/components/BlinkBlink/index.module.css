@@ -1,6 +1,6 @@
 .blink {
   padding: 2rem;
-  background: linear-gradient(135deg, var(--color-red-900), var(--color-blue-900));
+  background: #212121;
   color: #fff;
   border-radius: 1rem;
   box-shadow: 0 4px 24px rgba(110, 142, 251, 0.2);
@@ -9,4 +9,11 @@
   font-weight: bold;
   min-width: 200px;
   min-height: 100%;
+}
+
+.content {
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(135deg, var(--color-yellow-300), var(--color-green-300)); /* testing CSS variables from Tailwind */
 }

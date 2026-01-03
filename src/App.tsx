@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import './App.css';
-import { BlinkBlink, FancyBox, Pikachu } from './lib/components';
+import { FancyBox } from './lib/components/FancyBox';
+import { BlinkBlink } from './lib/components/BlinkBlink';
+import { Pikachu } from './lib/components/Pikachu';
 
 function App() {
   const [count, setCount] = useState(0);

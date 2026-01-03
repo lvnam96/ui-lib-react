@@ -1,10 +1,27 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
-import { resolve } from 'path';
+import { basename, resolve } from 'path';
+import { createHash as cryptoCreateHash } from 'crypto';
 // import smartAsset from 'rollup-plugin-smart-asset';
 
 export default defineConfig({
+  css: {
+    modules: {
+      // Increase hash length to avoid conflicts (ref: https://stackoverflow.com/a/79035129)
+      generateScopedName: (className, filename) => {
+        const fileName = basename(filename, '.module.css');
+
+        function createHash(hash: string) {
+          return cryptoCreateHash('sha256').update(hash).digest('hex').substring(0, 5);
+        }
+
+        const hash = createHash(className);
+
+        return `${fileName}_${className}__${hash}`;
+      }
+    }
+  },
   plugins: [
     // smartAsset({
     //   rule: 'rebase',
@@ -35,6 +52,8 @@ export default defineConfig({
         FancyBox: resolve(__dirname, 'src/lib/components/FancyBox/index.tsx'),
         BlinkBlink: resolve(__dirname, 'src/lib/components/BlinkBlink/index.tsx'),
         Pikachu: resolve(__dirname, 'src/lib/components/Pikachu/index.tsx'),
+        ErrorBoundary: resolve(__dirname, 'src/lib/components/ErrorBoundary/index.tsx'),
+        TodoInput: resolve(__dirname, 'src/lib/components/TodoInput/index.tsx'),
       },
       output: {
         inlineDynamicImports: false, // to have multiple entry points, vite needs this option set to false
