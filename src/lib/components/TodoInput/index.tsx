@@ -82,11 +82,11 @@ export const TodoInput: FC<TodoInputProps> = ({
           </button>
         </div>
       </form>
-      <div className={styles.info}>
+      {/* <div className={styles.info}>
         <span className={styles.counter}>
           {value.length} / {maxLength}
         </span>
-      </div>
+      </div> */}
     </div>
   );
 };

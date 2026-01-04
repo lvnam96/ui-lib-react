@@ -1,13 +1,11 @@
 import type { FC } from 'react';
 import styles from './index.module.css';
-// import { useRxjsStore } from '../../hooks/useExternalStore';
-
+import '../../index2.css'; // This kind of CSS import affects global styles of the host app
 export interface FancyBoxProps extends React.HTMLAttributes<HTMLDivElement> {
   text?: string;
 }
 
 export const FancyBox: FC<FancyBoxProps> = ({ text = 'FancyBox!' }) => {
-  // useRxjsStore(behaviorSubjectInstance);
   return (
     <div
       className={styles.box} // <-- CSS Modules works

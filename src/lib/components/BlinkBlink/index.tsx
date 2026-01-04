@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import styles from './index.module.css';
-import './index2.css'; // This kind of CSS import affects global styles of the host app
+// import '../../index2.css'; // This kind of CSS import affects global styles of the host app
 
 export interface BlinkBlinkProps extends React.HTMLAttributes<HTMLDivElement> {
   counter: number;
