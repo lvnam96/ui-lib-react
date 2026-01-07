@@ -1,0 +1,9 @@
+/* Tailwind v4 */
+/* @import "tailwindcss" source("."); */
+
+/* Tailwind v3 */
+@config "./tailwind.config.js";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
